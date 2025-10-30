@@ -1,0 +1,77 @@
+# Responsive Container Code
+
+
+Here is a single container that will change from horizontal to Vertical Layout based on the device screen size:
+- contJobName:
+Control: GroupContainer@1.3.0
+Variant: AutoLayout
+Properties:
+Fill: =Color.LightBlue
+Height: =If(App.ActiveScreen.Size>=ScreenSize.Large,60,120)
+LayoutDirection: =If(App.ActiveScreen.Size>=ScreenSize.Medium,LayoutDirection.Horizontal,LayoutDirection.Vertical)
+LayoutGap: =If(App.ActiveScreen.Size>=ScreenSize.Large,20,10)
+PaddingBottom: =Self.PaddingTop
+PaddingLeft: |
+=If(App.ActiveScreen.Size>=ScreenSize.Large,10,5)
+PaddingRight: =Self.PaddingLeft
+PaddingTop: =5
+RadiusBottomLeft: =Self.RadiusTopLeft
+RadiusBottomRight: =Self.RadiusTopLeft
+RadiusTopLeft: =10
+RadiusTopRight: =Self.RadiusTopLeft
+Children:
+- lblStartScreenJobName:
+Control: Label@2.5.1
+Properties:
+AlignInContainer: =AlignInContainer.Stretch
+BorderColor: =Color.DarkBlue
+Color: =Color.Black
+DisabledFill: =Color.Transparent
+Fill: =Color.Transparent
+FillPortions: =1
+Font: =Font.Arial
+Height: =30
+LayoutMinHeight: =30
+LayoutMinWidth: =0
+PaddingBottom: =Self.PaddingTop
+PaddingLeft: =10
+PaddingRight: =Self.PaddingTop
+Size: =14
+Text: ="Job Name"
+Width: =0
+X: =0.00
+Y: =0.00
+- txtStartScreenJobName:
+Control: Classic/TextInput@2.3.2
+Properties:
+AccessibleLabel: =lblStartScreenJobName.Text
+AlignInContainer: =AlignInContainer.Stretch
+BorderColor: =Color.DarkBlue
+Color: =Color.DarkBlue
+Default: =
+DelayOutput: =true
+Fill: =Color.White
+FillPortions: =1
+Font: =Font.Arial
+Height: =If(Acceleration.X>0,80,40)
+HoverBorderColor: =Color.DarkBlue
+HoverColor: =Color.DarkBlue
+HoverFill: =RGBA(186, 202, 226, 1)
+LayoutMinHeight: =30
+LayoutMinWidth: =0
+PaddingBottom: =Self.PaddingTop
+PaddingLeft: =10
+PaddingRight: =Self.PaddingTop
+RadiusBottomLeft: =Self.RadiusTopLeft
+RadiusBottomRight: =Self.RadiusTopLeft
+RadiusTopRight: =Self.RadiusTopLeft
+Reset: =
+Size: =14
+Width: |-
+=If(
+App.ActiveScreen.Size >= ScreenSize.Large,
+Parent.Width - lblStartScreenJobName.Width - Parent.PaddingLeft*2 - Parent.LayoutGap,
+Parent.Width-Parent.PaddingLeft-Parent.PaddingRight
+)
+X: =0.00
+Y: =0.00
