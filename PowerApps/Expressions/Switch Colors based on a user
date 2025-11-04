@@ -1,0 +1,33 @@
+fxReturnInitials(name:Text):Text =
+ Left(First(Split(
+name, " ")).Value, 1)
+ 
+&" " &
+ 
+Left(Last(Split(
+name, " ")).Value, 1);
+ 
+fxColorCodes =
+[
+    {ID: 1, Color: Color.Red},
+    {ID: 2, Color: Color.Gold},
+    {ID: 3, Color: Color.LightBlue},
+    {ID: 4, Color: RGBA(0, 255, 0, 1)},
+    {ID: 5, Color: RGBA(0, 0, 255, 1)}
+];
+ 
+fxAllUsersInJobItems = Distinct(col_JobEquipDetails, fxReturnInitials('Created By'.'Full Name'));
+ 
+ 
+fxRetrieveColorCode(CurrentUser:Text):Color =
+  LookUp(fxColorCodes, ID =
+  LookUp(  
+    ForAll(Sequence(CountRows(fxAllUsersInJobItems), 1),
+    {
+        Index: Value,
+        Name: Last(FirstN(fxAllUsersInJobItems, Value)).Value
+    }), Name = CurrentUser, Index), Color)
+;
+
+
+ 
