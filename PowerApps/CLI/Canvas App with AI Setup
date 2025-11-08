@@ -2,4 +2,4 @@
 pac canvas unpack --msapp "Projects-Tasks-Tickets.msapp" --sources "C:\Users\ADMIN\Desktop\Canvas APP AI\Unpack"
 
 # PACK
-pac canvas pack --sources "C:\Users\ADMIN\Desktop\Canvas APP AI\Pack" --msapp "Projects-Tasks-Tickets.msapp"
+pac canvas pack --msapp "C:\Users\ADMIN\Desktop\Canvas APP AI\Unpack\Projects-Tasks-Ticket.msapp" --sources "C:\Users\ADMIN\Desktop\Canvas APP AI\Unpack"
